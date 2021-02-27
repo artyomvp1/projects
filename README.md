@@ -1,4 +1,4 @@
-<img align="center" src="sql.png" width="128px=" >
+<img align="center" src="sql.png" width="64px=" >
 
 # My Projects
 
