@@ -1,4 +1,4 @@
-<img align="center" src="sql.png" width="64px=" >
+<img align="center" src="pngegg.png" width="64px=" ><img align="center" src="oracle.png" width="64px=" >
 
 # My Projects
 
