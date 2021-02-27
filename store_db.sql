@@ -1,30 +1,12 @@
 /*
-TABLES (sales, customers, log, views, aggregate)
+DATA INTEGRITY
+
+TABLES -> SEQUENCES -> INDEXES -> MATERIALIZED VIEWS
 TRIGGERS
-INDEXES
-SEQUENCES
-PROCEDURES 
-JOB
+PROCEDURES -> JOBS
 */
 
--- Creating sequences for all tables
-DECLARE
-    TYPE c_type IS TABLE OF VARCHAR2(20) ;
-    v_collection c_type := c_type('customer_sq', 'product_sq', 'sales_sq', 'event_log_sq1') ;
-    
-    v_sql VARCHAR2(100) ;
-    
-BEGIN
-    FOR i IN v_collection.FIRST .. v_collection.LAST
-    LOOP    
-        v_sql := 'CREATE SEQUENCE ' || v_collection(i) || ' MINVALUE 1 INCREMENT BY 1' ;
-        EXECUTE IMMEDIATE v_sql ;
-    
-    END LOOP ;
-    
-END ;
-
--- Create tables 
+-- TABLES
 CREATE TABLE customer (customer_id NUMBER,
                        create_date DATE,
                        first_name  VARCHAR2(30),
@@ -74,8 +56,34 @@ CREATE TABLE event_log (event_id NUMBER,
                         CONSTRAINT pk_event_log PRIMARY KEY(event_id),
                         CONSTRAINT fk_event_log_ec FOREIGN KEY(event_code) REFERENCES event_cat.event_type
                         ) ;
-                        
--- Trigger control 
+
+
+-- SEQUENCES FOR ALL TABLES
+DECLARE
+    TYPE c_type IS TABLE OF VARCHAR2(20) ;
+    v_collection c_type := c_type('customer_sq', 'product_sq', 'sales_sq', 'event_log_sq1') ;
+    
+    v_sql VARCHAR2(100) ;
+    
+BEGIN
+    FOR i IN v_collection.FIRST .. v_collection.LAST
+    LOOP    
+        v_sql := 'CREATE SEQUENCE ' || v_collection(i) || ' MINVALUE 1 INCREMENT BY 1' ;
+        EXECUTE IMMEDIATE v_sql ;
+    
+    END LOOP ;
+    
+END ;
+
+-- NC-INDEXES
+CREATE INDEX nc_sales_customer_id 
+    ON sales(customer_id) ;
+    
+CREATE INDEX nc_sales_total_amount
+    ON sales(total_amount) ;
+
+                                                      
+-- TRIGGER CONTROL
 CREATE OR REPLACE TRIGGER customer_control
     AFTER UPDATE
     ON customer
@@ -91,4 +99,45 @@ BEGIN
     INSERT INTO event_log
         VALUES(event_log_sq.NEXTVAL, SYSDATE, v_user, 'CUSTOMER', NULL, NULL, 'CUSTOMER has been updated') ;
         
+END ;
+                                                      
+ 
+-- MATERIALIZED VIEWS
+CREATE MATERIALIZED VIEW vw_sales_aggregate
+AS
+    SELECT sales_date,
+           s.customer_id,
+           SUBSTR(first_name, 1, 1) || '. ' || last_name AS full_name,
+           SUM(total_amount) AS total_amount
+    FROM sales s
+    LEFT JOIN customer c ON c.customer_id = s.customer_id 
+    GROUP BY sales_date, s.customer_id, SUBSTR(first_name, 1, 1) || '. ' || last_name
+    ORDER BY 1, 2 ;
+
+                                                      
+-- PROCEDURES
+CREATE OR REPLACE PROCEDURE view_refresh
+AS
+
+BEGIN
+    DBMS_MVIEW.REFRESH('vw_sales_aggregate') ;
+    
+    INSERT INTO event_log
+        VALUES(event_log_sq.NEXTVAL, SYSDATE, 'JOB', NULL, NULL, NULL, 'Views update') ;
+    
+    COMMIT ;
+    
+END ;
+           
+                                                      
+-- JOBS
+BEGIN
+    DBMS_SCHEDULER.CREATE_JOB (job_name             => 'views_refresh',
+                               job_type             => 'STORED_PROCEDURE',
+                               job_action           => 'view_refresh',
+                               start_date           => SYSTIMESTAMP,
+                               repeat_interval      => 'freq=daily; interval=1;', --hourly
+                               end_date             => NULL,
+                               enabled              => TRUE,
+                               comments             => 'Refreshing views') ;
 END ;
