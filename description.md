@@ -1,4 +1,4 @@
-# About project
+# About the project
 <i>Long story about this project</i>
 
 ## Tables
@@ -20,3 +20,7 @@
 ## Jobs
 
 ## Reports
+
+# Known Isues
+* More operations should be logged
+* Procedure 'CASHBACK' should lock table 'CUSTOMER' before updating via FOR UPDATE NOWAIT statement
