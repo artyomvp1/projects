@@ -4,7 +4,7 @@
 * [Create table statements](table_organization.sql)
 * [Programming objects (procedures, triggers, jobs)](programming_objects.sql)
 * Reports and analysis
-* Summary
+* [Summary](summary.md)
 
 
 
