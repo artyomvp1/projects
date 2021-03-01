@@ -2,7 +2,7 @@
 * [Intro](description.md)
 * Database diagram
 * [Create table statements](table_organization.sql)
-* [Programming objects (procedures, triggers, jobs, backups, security)](programming_objects.sql)
+* [Programming objects (procedures, triggers, jobs)](programming_objects.sql)
 * Reports and analysis
 * Summary
 
