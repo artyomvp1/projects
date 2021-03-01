@@ -35,7 +35,7 @@ CREATE TABLE customer (customer_id NUMBER,
                        first_name VARCHAR2(30) NOT NULL,
                        last_name VARCHAR2(30) NOT NULL,
                        date_of_birth DATE,
-                       deposit NUMBER DEFAULT 0,
+                       balance NUMBER DEFAULT 0,
                        service_plan VARCHAR2(20),
                        CONSTRAINT pk_customer PRIMARY KEY(customer_id) ) ;
 
