@@ -1,5 +1,5 @@
 ### Book Store   <img align="center" src="logo/sqlserver.png" width="88px" > <img align="center" src="logo/oracle.png" width="88px" > 
-* Intro
+* [Intro](description.md)
 * [Create table statements](table_organization.sql)
 * [Programming objects (procedures, triggers, jobs, backups, security)](programming_objects.sql)
 * Reports and analysis
