@@ -4,11 +4,8 @@
 * [Create table statements](table_organization.sql)
 * [Programming objects (procedures, triggers, jobs)](programming_objects.sql)
 * Reports and analysis
-* [Summary](summary.md)
-
 
 
 ### Statistics   <img align="center" src="logo/python.png" width="88px" >
 * Intro
 * [Data Visualization](Project_3.ipynb)
-* Summary
