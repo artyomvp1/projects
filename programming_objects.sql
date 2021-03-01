@@ -9,10 +9,8 @@ CREATE OR REPLACE TRIGGER price_control -- price change trigger
     ON book
     FOR EACH ROW
     WHEN (NEW.price != OLD.price)
-
 DECLARE
     v_user VARCHAR2(30) ;
-    
 BEGIN
     SELECT user
     INTO v_user
@@ -29,11 +27,9 @@ CREATE OR REPLACE TRIGGER balance_change -- balance change trigger
     OF balance
     ON customer 
     FOR EACH ROW
-    WHEN (NEW.balance != OLD.balance)
-    
+    WHEN (NEW.balance != OLD.balance)  
 DECLARE
     v_user VARCHAR2(30) ;
-    
 BEGIN
     SELECT user
     INTO v_user
@@ -41,8 +37,7 @@ BEGIN
     
     INSERT INTO event_log
         VALUES(event_log_sq.NEXTVAL, SYSTIMESTAMP, v_user, 'CUSTOMER', :NEW.balance, :OLD.balance, 
-               'CUSTOMER_ID: ' || :OLD.customer_id || ', balance has been changed to ' || :NEW.balance) ;
-               
+               'CUSTOMER_ID: ' || :OLD.customer_id || ', balance has been changed to ' || :NEW.balance) ;             
 END ;
 /
 
