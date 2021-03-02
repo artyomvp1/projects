@@ -1,10 +1,10 @@
 /* SEQUENCE */
-CREATE SEQUENCE event_log_sq -- SEQUENCE
+CREATE SEQUENCE event_log_sq
     MINVALUE 1
     INCREMENT BY 1 ;
 
 /* TRIGGER */
-CREATE OR REPLACE TRIGGER price_control -- price change trigger
+CREATE OR REPLACE TRIGGER price_control
     AFTER UPDATE
     OF price
     ON book
