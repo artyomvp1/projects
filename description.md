@@ -20,6 +20,7 @@
 ## Jobs
 
 ## Reports
+* [Total sales and customers median values](report1.customer_median.sql)
 
 # Known Isues
 * More operations should be logged
