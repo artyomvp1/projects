@@ -14,7 +14,8 @@
 ## Jobs
 
 ## Reports
-* [Total sales and customers median values](report_customer_median.sql)
+* [Total sales and customer's median values](report_customer_median.sql)
+* [Last and last three customer's purchases](report_last_purchase.sql)
 * [Top 10 books sold](report_top_books_sold.sql)
 
 # Known Isues
