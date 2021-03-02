@@ -2,13 +2,7 @@
 <i>Long story about this project</i>
 
 ## Tables
-* customer - 
-* customer_security - 
-* author - 
-* publisher - 
-* warehouse - 
-* book - 
-* sales - 
+* Create table scripts
 
 ## Triggers
 * price_control - 
@@ -20,7 +14,7 @@
 ## Jobs
 
 ## Reports
-* [Total sales and customers median values](report1.customer_median.sql)
+* [Total sales and customers median values](report1_customer_median.sql)
 
 # Known Isues
 * More operations should be logged
