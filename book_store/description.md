@@ -1,5 +1,5 @@
-# About the project
-<i>Long story about this project</i>
+# About
+<i>This project is aimed to analytical operations so DBA and security topics are not covered.</i>
 
 ### Tables and views
 * [Create table scripts](table_organization.sql)
