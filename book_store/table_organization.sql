@@ -1,3 +1,4 @@
+/* TABLES AND VIEWS */
 CREATE TABLE author (author_id NUMBER,
                      create_date DATE,
                      first_name VARCHAR2(30),
@@ -71,4 +72,14 @@ CREATE TABLE event_log (event_id NUMBER,
                         deleted_value VARCHAR2(100),
                         commentary CLOB,
                         CONSTRAINT pk_event_log PRIMARY KEY(event_id) ) ;
---
+
+-- MATERIALIZED VIEW
+CREATE MATERIALIZED VIEW vw_daily_sales 
+AS
+    SELECT sales_date,
+           COUNT(*) AS total_sales,
+           COUNT(DISTINCT customer_id) unique_customers,
+           SUM(total_amount) total_amount
+    FROM sales 
+    GROUP BY sales_date
+    ORDER BY sales_date ;
