@@ -14,7 +14,7 @@
 ## Jobs
 
 ## Reports
-* [Total sales and customers median values](book_store/report1_customer_median.sql)
+* [Total sales and customers median values](report1_customer_median.sql)
 
 # Known Isues
 * More business operations should be logged using triggers
