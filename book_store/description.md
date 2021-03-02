@@ -1,17 +1,17 @@
 # About the project
 <i>Long story about this project</i>
 
-## Tables
+### Tables
 * [Create table scripts](table_organization.sql)
 
-## Triggers
+### Triggers
 * [Price control](trigger_price_control.sql)
 * [Balance change](trigger_balance_change.sql) 
 
-## Procedures 
+### Procedures 
 * [Cashback](procedure_cashback.sql)
 
-## Jobs
+### Jobs
 
 ## Reports
 * [Total sales and customer's median values](report_customer_median.sql)
@@ -21,3 +21,4 @@
 # Known Isues
 * More business operations should be logged using triggers
 * Procedure 'CASHBACK' should lock table 'CUSTOMER' before updating via FOR UPDATE NOWAIT statement
+* Daily calculating the whole SALES table to refresh the materialized view VW_daily_sales
