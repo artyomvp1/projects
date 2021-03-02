@@ -17,5 +17,5 @@
 * [Total sales and customers median values](report1_customer_median.sql)
 
 # Known Isues
-* More operations should be logged
+* More business operations should be logged using triggers
 * Procedure 'CASHBACK' should lock table 'CUSTOMER' before updating via FOR UPDATE NOWAIT statement
