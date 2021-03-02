@@ -71,3 +71,4 @@ CREATE TABLE event_log (event_id NUMBER,
                         deleted_value VARCHAR2(100),
                         commentary CLOB,
                         CONSTRAINT pk_event_log PRIMARY KEY(event_id) ) ;
+--
