@@ -2,14 +2,14 @@
 <i>Long story about this project</i>
 
 ## Tables
-* Create table scripts
+* [Create table scripts](table_organization.sql)
 
 ## Triggers
-* price_control - 
-* balance_change - 
+* [Price control](trigger_price_control.sql)
+* [Balance change](trigger_balance_change.sql) 
 
 ## Procedures 
-* cashback - 
+* [Cashback](procedure_cashback.sql)
 
 ## Jobs
 
