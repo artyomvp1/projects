@@ -1,7 +1,7 @@
 # About the project
 <i>Long story about this project</i>
 
-### Tables
+### Tables and views
 * [Create table scripts](table_organization.sql)
 
 ### Triggers
@@ -12,6 +12,7 @@
 * [Cashback](procedure_cashback.sql)
 
 ### Jobs
+* [Update views](job_update_views.sql)
 
 ## Reports
 * [Total sales and customer's median values](report_customer_median.sql)
