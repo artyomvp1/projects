@@ -10,7 +10,7 @@ BEGIN
                                                             COMMIT ;
                                                         END ;',
                                start_date           => SYSTIMESTAMP,
-                               repeat_interval      => 'freq=daily; interval=1;', --hourly
+                               repeat_interval      => 'freq=daily; interval=1;',
                                end_date             => NULL,
                                enabled              => TRUE,
                                comments             => 'Job to update views') ;
