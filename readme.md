@@ -1,4 +1,4 @@
-### Book Store   <img align="center" src="logo/oracle.png" width="64px" > 
+### Book Store   <img align="center" src="logo/sql.png" width="64px" > <img align="center" src="logo/oracle.png" width="64px" > 
 * [Description and Scripts](book_store/description.md)
 * [Database Diagram](book_store/table_organization.pdf)
 * [Programming Objects (procedures, triggers, jobs)](book_store/programming.pdf)
