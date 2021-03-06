@@ -5,7 +5,7 @@
 * [Reports and Analysis](book_store/reports.pdf)
 
 
-### Statistics    <img align="center" src="logo/python.png" width="60px" > <img align="center" src="logo/sql.png" width="32px" > <img align="center" src="logo/excel.png" width="56px" >
+### IMDb Analysis    <img align="center" src="logo/python.png" width="60px" > <img align="center" src="logo/sql.png" width="32px" > <img align="center" src="logo/excel.png" width="56px" >
 * [Description and Code Review](imdb_analysis/description.md)
 * Data Visualization: 1
 * Data Visualization: 2
