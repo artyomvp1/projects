@@ -1,4 +1,4 @@
-create or replace PROCEDURE add_sale(v_customer_id IN NUMBER,
+CREATE or REPLACE PROCEDURE add_sale(v_customer_id IN NUMBER,
                                      v_book_id IN NUMBER,
                                      v_warehouse_id IN NUMBER )
 AS
