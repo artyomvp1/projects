@@ -9,7 +9,12 @@
 * [Balance change](trigger_balance_change.sql) 
 
 ### Procedures 
+* [Add sale](procedure_add_sale.sql)
 * [Cashback](procedure_cashback.sql)
+
+### Functions
+* [Get balance](function_get_balance.sql)
+* [Get price](function_get_price.sql)
 
 ### Jobs
 * [Update views](job_update_views.sql)
@@ -23,3 +28,4 @@
 * More business operations should be logged using triggers
 * Procedure 'CASHBACK' should lock table 'CUSTOMER' before updating via FOR UPDATE NOWAIT statement
 * Daily calculating the whole SALES table to refresh the materialized view VW_daily_sales
+* Procedure 'ADD_SALE' should extract information for update using cursor or or bulk collecting.
