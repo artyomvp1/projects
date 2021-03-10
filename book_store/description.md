@@ -1,5 +1,5 @@
 # About
-<i>This project is aimed to analytical operations so DBA and security topics are not covered.</i>
+<i>This project is created to accommodate sales needs of a minimalistic book store. It is also aimed to ensure data integrity and database normalization principles. The database has comprehensive table relations and structure, which provide efficient completion of daily business processes. The project is aimed to consider analytical operations, so DBA and security topics are not covered.</i>
 
 ### Tables and views
 * [Create table scripts](table_organization.sql)
