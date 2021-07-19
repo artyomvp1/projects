@@ -5,12 +5,8 @@
 * [Reports and Analysis](book_store/reports.pdf)
 
 
-### Case Study: COVID-19    <img align="center" src="logo/python.png" width="60px" > <img align="center" src="logo/sql.png" width="32px" > <img align="center" src="logo/excel.png" width="56px" >
-* Ask (Description (What about? Why?)
-* Prepare (Goals, what data to collect, how to collect)
-* Process (Cleaning using Python/SQL)
-* Analyze (Excel + graphs)
-* Share (Graphs/plots Python, Tableau/R)
+### Case Study: Bellabeat    <img align="center" src="logo/python.png" width="60px" > <img align="center" src="logo/sql.png" width="32px" > <img align="center" src="logo/excel.png" width="56px" >
+* Ask
 
 
 ### Google Bootcamp Capstone
