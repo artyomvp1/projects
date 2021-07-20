@@ -6,7 +6,5 @@
 
 
 ### Case Study: Bellabeat    <img align="center" src="logo/python.png" width="60px" > <img align="center" src="logo/sql.png" width="32px" > <img align="center" src="logo/excel.png" width="56px" >
-* Ask
+* Phase 1: Asking questions and determining goals
 
-
-### Google Bootcamp Capstone
