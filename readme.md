@@ -6,5 +6,6 @@
 
 
 ### Case Study: Bellabeat    <img align="center" src="logo/python.png" width="60px" > <img align="center" src="logo/sql.png" width="32px" > <img align="center" src="logo/excel.png" width="56px" >
-* Phase 1: Asking questions and determining goals
-
+* About
+* [Case Study](https://www.kaggle.com/artyomvp1/case-study-bellabeat)
+* Resources
