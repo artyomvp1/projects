@@ -1,4 +1,4 @@
-### Case Study: Bellabeat    <img align="center" src="logo/r.png" width="40px" > <img align="center" src="logo/sql.png" width="32px" > <img align="center" src="logo/excel.png" width="56px" >
+### Case Study: Bellabeat    <img align="center" src="logo/r.png" width="40px" > <img align="center" src="logo/excel.png" width="56px" >
 * [About](bellabeat/about.md)
 * [Case Study](https://www.kaggle.com/artyomvp1/case-study-bellabeat)
 * Resources:
