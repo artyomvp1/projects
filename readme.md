@@ -1,12 +1,11 @@
-### Case Study: Bellabeat    <img align="center" src="logo/r.png" width="40px" > <img align="center" src="logo/excel.png" width="56px" >
+### Case Study: Bellabeat | <img align="center" src="logo/r.png" width="40px" > <img align="center" src="logo/excel.png" width="56px">
 * [About](bellabeat/about.md)
 * [Case Study](https://www.kaggle.com/artyomvp1/case-study-bellabeat)
-* Resources:
-  * [Data sets](bellabeat/datasets)
-  * [Code](bellabeat/bellabeat.Rmd) 
+* [Resources]()
 
 
-### Book Store    <img align="center" src="logo/sql.png" width="32px" > <img align="center" src="logo/oracle.png" width="64px" > 
+
+### Book Store | <img align="center" src="logo/oracle.png" width="64px"> <img align="center" src="logo/sql.png" width="32px"> 
 * [Description and Scripts](book_store/description.md)
 * [Database Diagram](book_store/table_organization.pdf)
 * [Programming Objects (procedures, triggers, functions, jobs)](book_store/programming_objects.pdf)
