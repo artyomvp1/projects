@@ -1,8 +1,13 @@
-### Case Study: Bellabeat | <img align="center" src="logo/r.png" width="40px" > <img align="center" src="logo/excel.png" width="56px">
+### Case Study: Bellabeat | <img align="center" src="logo/r.png" width="40px" > <img align="center" src="logo/excel.png" width="70px">
 * [About](bellabeat/about.md)
 * [Case Study](https://www.kaggle.com/artyomvp1/case-study-bellabeat)
 * [Resources]()
 
+
+### Case Study: Video Game Sales | <img align="center" src="logo/python.png" width="78px" >
+* [About]()
+* [Case Study](https://www.kaggle.com/artyomvp1/case-study-video-game-sales)
+* [Resources]()
 
 
 ### Book Store | <img align="center" src="logo/oracle.png" width="64px"> <img align="center" src="logo/sql.png" width="32px"> 
