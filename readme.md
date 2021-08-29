@@ -10,9 +10,9 @@
 * [Code](video_game_sales/video_game_sales.ipynb)
 
 ### Exploratory Analysis: Worldwide Meat Consumption | <img align="center" src="logo/r.png" width="40px">
-* [About]
-* [Analysis](https://www.kaggle.com/artyomvp1/exploratory-analysis-meat-consumption)
-* [Code]
+* [About](meat_consumption/about.md)
+* [Analysis](https://www.kaggle.com/artyomvp1/exploratory-analysis-world-meat-consumption)
+* [Code](meat_consumption/meat_consumption.Rmd)
 
 ### Book Store | <img align="center" src="logo/oracle.png" width="64px"> <img align="center" src="logo/sql.png" width="32px"> 
 * [Description and Scripts](book_store/description.md)
