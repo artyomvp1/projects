@@ -1,0 +1,302 @@
+#### Personal notes
+* *Plot size*
+* *Coloring data frames (formattable)*
+
+# Introduction
+In this exploratory analysis I will try to analyze world meat consumption data starting from 1990. 
+Along with finding patterns and correlations, the goal of the analysis is to demonstrate my technical skills using R programming language and its libraries.
+
+# Stage 1: Goals and tasks
+### Tasks
+* Exploratory analysis to understand the various aspects of the data
+* Identify errors of data
+* Determine patterns
+
+
+# Stage 2: Preparation
+**Data:** [click](https://www.kaggle.com/vagifa/meatconsumption)  
+**License:** [click](https://opendatacommons.org/licenses/dbcl/1-0/)  
+**Description:** The data contains information about meat consumption worldwide (1990 - 2026). This data set was refreshed in 2018, with world meat projections up to 2026 are presented for beef and veal, pig, poultry, and sheep. Meat consumption is measured in thousand tonnes of carcass weight (except for poultry expressed as ready to cook weight) and in kilograms of retail weight per capita.  
+**Fields included**:  
+LOCATION - *the country code name*  
+SUBJECT - *The type of meat (pig, beef, etc)*  
+TIME - *the year the data was recorded*  
+MEASURE - *the measure used to show the value*  
+VALUE - *the value, according to the measure*  
+
+
+# Stage 3: Cleaning
+For this analysis I am using the standard set of `tidyverse`. Since I am going to be working with numbers, it is a good idea to upload `scales`. Cleaning the data set will be provided with the `janitor` library. Data appearance will be provided via `formattable`.
+
+
+### 3.1 Libraries, tools, datarames
+```{r upload libraries, echo=T, message=FALSE, warning=FALSE, results='hide'}
+library(tidyverse)
+library(janitor)
+library(scales)
+library(formattable)
+```
+
+
+```{r echo=T, message=FALSE, warning=FALSE}
+# Importing a data set
+df <- clean_names(read_csv("~/Downloads/meat_consumption.csv"))
+# df <- clean_names(read_csv("../input/meatconsumption/meat_consumption_worldwide.csv"))
+head(df)
+```
+
+
+### 3.2 Checking for data errors
+I start with the standard steps when it comes to cleaning data, namely checking whether data has duplicated rows of empty values. 
+```{r Cleaning}
+# Checking for missing values
+paste("Empty values: ", toString(any(is.na(df))))
+
+# Checking for duplicated rows
+paste("Duplicated rows: ", toString(any(duplicated(df))))
+
+# Dataframe dimensions
+paste("Dimension: ", toString(dim(df)))
+```
+
+
+### 3.3 Problems with the data
+Having observed the data, I found that the data contains the following issues:  
+
+1) The data has two different measures "Kilograms per capita" and "Thousand tons". Since I am interested in just one measure, I am going to filter and leave just "Thousand tons".  
+2) Along with current data, the data set contains projections until 2026. In order to represent the information in a meaningful way, I will divide the data into two data frames "now" and "projection".  
+3) The data set contains information about some countries grouped. For example: Russia is represented as a single country in this data set, but also in the data set we can see "BRICS" in which Russia is included. Since any additional information is not provided, I am going to filter those country groups from the analysis. 
+
+All the solutions will be conducted in **3.4**.
+
+```{r}
+# Countries represented
+unique(df$location)
+
+# Years represented
+unique(df$time)
+```
+
+
+### 3.4 The final data frames
+```{r Main Data sets}
+# The data before 2020
+df_now <- df %>%
+  filter(measure == 'THND_TONNE', 
+         time <= 2020,
+         !location %in% c('WLD', 'OECD', 'BRICS', 'EU28', 'SSA')) %>%
+  mutate(value = round(value))
+
+# The data after 2021
+df_projection <- df %>%
+  filter(measure == 'THND_TONNE', 
+         time > 2020,
+         !location %in% c('WLD', 'OECD', 'BRICS', 'EU28', 'SSA')) %>%
+  mutate(value = round(value))
+
+# Function to set up size of plots
+fig <- function(x,y) {
+  options(repr.plot.width = x, repr.plot.height = y)
+  }
+```
+
+
+# Stage 4: Analysis
+### 4.1 Basic statistics
+As we see from the aggregated info the minimal value of meat consumption is 0. Highly likely that the data from that year was not collected. The maximal meat consumption is **56 874**.
+```{r}
+# Overall information
+df_now %>%
+  select(value) %>%
+  summary()
+```
+
+
+### 4.2 Overall meat consumption by type  
+For the last 30 years the amount of pork consumption has overtaken beef. The reason of beef and sheep having the lowest rates comparing to other types is that beef and sheep production have much higher environmental impact such as land and water use, greenhouse gas emission, air pollution, energy consumption, animal waste ([source](https://en.wikipedia.org/wiki/Environmental_impact_of_meat_production)).
+```{r}
+# Calculating overall consumption by type
+consumption <- df_now %>%
+  group_by(subject) %>%
+  summarise(total_consumption=sum(value))
+
+
+# Visualization
+fig(12,8)
+
+consumption %>%
+  ggplot(mapping=aes(x=subject, y=total_consumption, fill=subject)) + 
+  geom_col() +
+  geom_text(aes(label=total_consumption), vjust=-0.5, size=7) +
+  # Handling y-ticks representation
+  scale_y_continuous(labels=label_number(suffix=' M', scale=1e-6),
+                     limits=c(0, 3000000)) +    # define ticks manually
+  # Labels
+  labs(title='Overall Consumption',
+       x='Type',
+       y='Thousand Ton') +
+  # Non-data representation
+  theme(plot.title=element_text(face='bold', size=20, hjust=0.5),
+          
+        axis.title=element_text(face='bold', size=30, hjust=0, color='grey'),
+        axis.text.x=element_blank(),
+        axis.text.y=element_text(face='bold', size=12),
+          
+        legend.position='top',    # bottom/right/left
+        legend.title=element_blank(),
+        legend.text=element_text(face='bold', size=16, color='#4e5450'),
+        legend.background=element_rect(fill="#e6e8e7"))
+```
+
+
+### 4.3 Consumption by countries  
+According to the data China has the highest numbers of overall meat consumption. The reason is because China has the biggest population in the world with almost 1.45 B people according to the [source](https://www.worldometers.info/world-population/china-population/):
+```{r}
+# Calculating total by countries
+countries <- df_now %>%
+  group_by(location) %>%
+  summarise(total_consumption=sum(value)) %>%
+  arrange(-total_consumption)
+
+# Visualization
+fig(12, 7)
+
+countries %>%
+  ggplot(mapping=aes(x=reorder(location, desc(total_consumption)), 
+                     y=total_consumption, 
+                     width=0.5,
+                     fill=location)) + 
+  geom_col() +
+  # Labels
+  labs(title='Consumption by Countries',
+       x='Countries',
+       y='Thousand Ton') +
+  # Non-data representation
+  theme(plot.title=element_text(face='bold', size=20, hjust=0.5),
+
+        legend.position='none',    # delete the legend
+          
+        axis.title=element_text(face='bold', size=30, hjust=0, color='grey'),
+        axis.text.x=element_text(face='bold', angle=90),
+        axis.text.y=element_text(face='bold', size=12))
+```
+
+
+### 4.4 Top 10 countires   
+The top 10 rating represents countries from well-being regions of the world, namely Europe (Russia), Asia (China, India, Japan), Southern and Northern America (Canada, USA, Brazil, Argentina):
+```{r message=FALSE, warning=FALSE}
+# Top 10 countries
+top_10 <- countries %>%
+  arrange(desc(total_consumption)) %>%
+  slice(1:10)
+
+# Display
+top_10 %>%
+  formattable(list(location=color_bar("yellow"), total_consumption=color_tile("transparent", "pink")), 
+              align=c('c', 'c')  # center, right, left
+             )
+```
+
+
+### 4.5 Top 10 countries by year
+Having organized the data by year (by pivoting and making it wide-data) we can clearly recognize the pattern that the rates of meat consuming are growing year by year (with not significant exceptions) in every country within top 10 rating:
+```{r message=FALSE, warning=FALSE}
+# Summarize top 10 countries
+countries_year <- df_now %>%
+  select(location, time, value) %>%
+  filter(location %in% top_10$location) %>%
+  group_by(location, time) %>%
+  summarise(total_consumption=sum(value))
+
+# Pivot the long data using tidyr
+countries_year <- pivot_wider(countries_year, 
+                              id_cols=time,
+                              names_from=location,
+                              values_from=total_consumption,
+                              values_fill=0)
+
+# Display
+countries_year %>% 
+  formattable(list(time=color_bar("lightgray"),
+                   ARG=color_tile("transparent", "lightblue"),
+                   BRA=color_tile("transparent", "pink"),
+                   CHN=color_tile("transparent", "pink"),
+                   USA=color_tile("transparent", "pink"),
+                   CAN=color_tile("transparent", "lightblue"),
+                   RUS=color_tile("transparent", "lightblue"),
+                   IND=color_tile("transparent", "lightblue"),
+                   MEX=color_tile("transparent", "lightblue"),
+                   VNM=color_tile("transparent", "lightblue"),
+                   JPN=color_tile("transparent", "lightblue")
+                   )
+              )
+```
+
+
+### 4.6 Top 10 by type
+```{r}
+# Top 10 countries by type
+fig(20, 8)
+
+df_now %>%
+  filter(location %in% top_10$location) %>%
+  # Visualization
+  ggplot(mapping=aes(x=time, color=location)) + 
+  geom_line(mapping=aes(y=value), size=1) + 
+  # Divide by meat types
+  facet_wrap(~subject) + 
+  # Labels
+  labs(title='Top 10 Countries by Meat Type',
+       x='Year',
+       y='Thousand Ton') +
+  # Non-data representation
+  theme(plot.title=element_text(face='bold', size=20, hjust=0.5),
+          axis.title=element_text(face='bold', size=30, hjust=0, color='grey'),
+          axis.text.x=element_text(face='bold', size=12, angle=90),
+          axis.text.y=element_text(face='bold', size=15),
+          strip.text.x = element_text(face='bold', color = "darkgreen")
+          )
+```
+
+
+### 4.7 Projection
+The projection for the next 5-6 years shows the tendency of increasing meat consumption over the years. Although consumption of pork is on the highest level, in the near future it is possible that consumption of poultry may overtake it. Beef and sheep rates hold the lower rates because of the reasons explained in 4.2.
+```{r message=FALSE, warning=FALSE}
+# Calculate the projection of consuming till 2026
+fig(22, 9)
+
+df_projection %>%
+  group_by(subject, time) %>%
+  summarise(projected_consumption=sum(value)) %>%
+  # Visualization
+  ggplot(mapping=aes(x=time, y=projected_consumption, fill=time)) +
+  geom_col() +
+  # geom_text(aes(label=projected_consumption, color='red'), vjust=-1, size=3, angle=90) +
+  # Divide by subject
+  facet_grid(~subject) +
+  # Labels
+  labs(title='Projection 2021-2026',
+       x='Year',
+       y='Thousand Ton') +
+  # Non-data representation
+  theme(plot.title=element_text(face='bold', size=20, hjust=0.5),
+        axis.title=element_text(face='bold', size=30, hjust=0, color='grey'),
+          
+        legend.position='none',
+          
+        axis.text.x=element_text(face='bold', size=12, angle=90),
+        axis.text.y=element_text(face='bold', size=15),
+        strip.text.x = element_text(face='bold', color = "darkgreen")
+        )
+```
+
+
+### Observations
+* Meat consumption is growing year by year
+* China, USA, Brazil have the highest rates on consuming
+* Pork is the highest consumed type of meat in the world
+
+
+# Stage 5: Recap
+Meat consumption is rising annually as human populations grow. Although meat is a good source of energy and some essential nutrients, including protein and micronutrients, meat produces more emissions per unit of energy compared with that of plant-based foods.  
+The world is expected to eat more meat in the current year of 2021 than ever before. This will generate more greenhouse-gas emissions and pollution. 
