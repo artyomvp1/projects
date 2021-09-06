@@ -14,7 +14,7 @@
 * [Analysis](https://www.kaggle.com/artyomvp1/exploratory-analysis-world-meat-consumption)
 * [Code](meat_consumption/meat_consumption.Rmd)
 
-### Case Study: Cyclistic (in progress...)| <img align="center" src="logo/python.png" width="78px" >
+### Case Study: Cyclistic (in progress...) | <img align="center" src="logo/python.png" width="78px" >
 * [About]
 * [Analysis]
 * [Code]
