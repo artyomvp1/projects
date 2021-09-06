@@ -14,6 +14,11 @@
 * [Analysis](https://www.kaggle.com/artyomvp1/exploratory-analysis-world-meat-consumption)
 * [Code](meat_consumption/meat_consumption.Rmd)
 
+### Case Study: Cyclistic (in progress...)| <img align="center" src="logo/python.png" width="78px" >
+* [About]
+* [Analysis]
+* [Code]
+
 ### Book Store | <img align="center" src="logo/oracle.png" width="64px"> <img align="center" src="logo/sql.png" width="32px"> 
 * [Description and Scripts](book_store/description.md)
 * [Database Diagram](book_store/table_organization.pdf)
