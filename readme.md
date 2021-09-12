@@ -17,7 +17,7 @@
 ### Case Study: Cyclistic (in progress...) | <img align="center" src="logo/python.png" width="78px" >
 * [About]
 * [Analysis](https://www.kaggle.com/artyomvp1/cyclistic?scriptVersionId=74546082)
-* [Code]
+* [Code](https://github.com/artyomvp1/Projects/blob/main/cyclistic/cyclistic.ipynb)
 
 ### Book Store | <img align="center" src="logo/oracle.png" width="64px"> <img align="center" src="logo/sql.png" width="32px"> 
 * [Description and Scripts](book_store/description.md)
