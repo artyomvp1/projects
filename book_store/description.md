@@ -24,7 +24,7 @@
 * [Last and last three customer's purchases](report_last_purchase.sql)
 * [Top 10 books sold](report_top_books_sold.sql)
 
-# Known Isues
+# Known Issues
 * More business operations should be logged using triggers
 * Procedure 'CASHBACK' should lock table 'CUSTOMER' before updating via FOR UPDATE NOWAIT statement
 * Daily calculating the whole SALES table to refresh the materialized view VW_daily_sales
