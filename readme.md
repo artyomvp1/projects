@@ -1,3 +1,8 @@
+### Case Study: Cyclistic | <img align="center" src="logo/python.png" width="78px" >
+* [About](cyclistic/description.md)
+* [Analysis](https://www.kaggle.com/artyomvp1/cyclistic?scriptVersionId=74546082)
+* [Code](https://github.com/artyomvp1/Projects/blob/main/cyclistic/cyclistic.ipynb)
+
 ### Case Study: Bellabeat | <img align="center" src="logo/r.png" width="40px"> <img align="center" src="logo/excel.png" width="70px">
 * [About](bellabeat/about.md)
 * [Analysis](https://www.kaggle.com/artyomvp1/case-study-bellabeat)
@@ -13,11 +18,6 @@
 * [About](meat_consumption/about.md)
 * [Analysis](https://www.kaggle.com/artyomvp1/exploratory-analysis-world-meat-consumption)
 * [Code](meat_consumption/meat_consumption.Rmd)
-
-### Case Study: Cyclistic (in progress...) | <img align="center" src="logo/python.png" width="78px" >
-* [About]
-* [Analysis](https://www.kaggle.com/artyomvp1/cyclistic?scriptVersionId=74546082)
-* [Code](https://github.com/artyomvp1/Projects/blob/main/cyclistic/cyclistic.ipynb)
 
 ### Book Store | <img align="center" src="logo/oracle.png" width="64px"> <img align="center" src="logo/sql.png" width="32px"> 
 * [Description and Scripts](book_store/description.md)
