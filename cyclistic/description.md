@@ -7,4 +7,4 @@
 * Hardcoding in the sections 4.2 - 4.5
 * Not working with subplots
 * Using for-loops instead of pandas tools
-* 
+
