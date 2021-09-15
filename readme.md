@@ -1,6 +1,6 @@
 ### Case Study: Cyclistic | <img align="center" src="logo/python.png" width="78px" >
 * [About](cyclistic/description.md)
-* [Analysis](https://www.kaggle.com/artyomvp1/cyclistic?scriptVersionId=74546082)
+* [Analysis](https://www.kaggle.com/artyomvp1/case-study-cyclistic)
 * [Code](https://github.com/artyomvp1/Projects/blob/main/cyclistic/cyclistic.ipynb)
 
 ### Case Study: Bellabeat | <img align="center" src="logo/r.png" width="40px"> <img align="center" src="logo/excel.png" width="70px">
