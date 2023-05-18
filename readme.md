@@ -1,3 +1,9 @@
+### Warehouse Workload Report | <img align="center" src="logo/oracle.png" width="64px"> <img align="center" src="logo/sql.png" width="32px"> 
+* [Description and Scripts]
+* [Report]
+* [Code]
+
+
 ### Case Study: Cyclistic | <img align="center" src="logo/python.png" width="78px" >
 * [About](cyclistic/description.md)
 * [Analysis](https://www.kaggle.com/artyomvp1/case-study-cyclistic)
